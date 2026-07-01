@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Senior AI Product Manager",
+    "company": "NovaMind Labs",
+    "location": "Singapore / Remote APAC",
+    "salary": "SGD 150k-190k",
+    "description": "Lead AI product strategy for enterprise copilots across APAC. Partner with design, engineering, and GTM teams to ship LLM-powered workflows.",
+    "requirements": "5+ years in product management, strong AI or ML product experience, enterprise SaaS background, excellent stakeholder management.",
+    "tags": ["AI", "Product Management", "LLM", "SaaS", "APAC"],
+    "seniority": "Senior",
+    "remote": true,
+    "source": "sample"
+  },
+  {
+    "title": "Entry Level Machine Learning Engineer",
+    "company": "Merlion Analytics",
+    "location": "Singapore",
+    "salary": "SGD 65k-85k",
+    "description": "Build data pipelines, train baseline models, and support ML experimentation for financial risk products.",
+    "requirements": "Python, SQL, statistics fundamentals, internships or projects in machine learning.",
+    "tags": ["Machine Learning", "Python", "SQL", "Fintech"],
+    "seniority": "Entry",
+    "remote": false,
+    "source": "sample"
+  },
+  {
+    "title": "Remote Fintech Product Manager",
+    "company": "LedgerFlow",
+    "location": "Remote APAC",
+    "salary": "USD 120k-155k",
+    "description": "Own roadmap for payments, compliance, and embedded finance APIs for startups and platforms.",
+    "requirements": "Product management experience, fintech domain knowledge, API products, customer discovery, analytics.",
+    "tags": ["Fintech", "Product Management", "APIs", "Remote"],
+    "seniority": "Mid",
+    "remote": true,
+    "source": "sample"
+  },
+  {
+    "title": "Blockchain AI Product Lead",
+    "company": "ChainPilot",
+    "location": "Remote",
+    "salary": "USD 160k-210k",
+    "description": "Design AI agents for on-chain analytics, wallet intelligence, and automated compliance workflows.",
+    "requirements": "Blockchain experience, AI product strategy, B2B SaaS leadership, comfort with ambiguous zero-to-one products.",
+    "tags": ["AI", "Blockchain", "Product Management", "Agents"],
+    "seniority": "Lead",
+    "remote": true,
+    "source": "sample"
+  },
+  {
+    "title": "Data Scientist, Growth",
+    "company": "HireLoop",
+    "location": "Bangalore, India",
+    "salary": null,
+    "description": "Model marketplace liquidity, optimize search ranking, and improve candidate-job matching funnels.",
+    "requirements": "Python, experimentation, causal inference, ranking systems, strong communication.",
+    "tags": ["Data", "Python", "Growth", "Search"],
+    "seniority": "Mid",
+    "remote": false,
+    "source": "sample"
+  },
+  {
+    "title": "RAG Solutions Architect",
+    "company": "VectorWorks AI",
+    "location": "United States Remote",
+    "salary": "USD 145k-185k",
+    "description": "Help enterprise customers build retrieval augmented generation systems with vector search and LLM orchestration.",
+    "requirements": "RAG, embeddings, Python, cloud architecture, customer-facing technical leadership.",
+    "tags": ["RAG", "LLM", "Embeddings", "Python", "Remote"],
+    "seniority": "Senior",
+    "remote": true,
+    "source": "sample"
+  }
+]
