@@ -54,7 +54,13 @@ def job_stats(db: Session = Depends(get_db)) -> JobStats:
         .order_by(models.Job.source)
     ).all()
     by_source = {str(source): int(count) for source, count in rows}
-    return JobStats(total=sum(by_source.values()), by_source=by_source)
+    providers = {
+        "remotive": True,
+        "adzuna": bool(settings.adzuna_app_id and settings.adzuna_app_key),
+        "greenhouse": True,
+        "lever": True,
+    }
+    return JobStats(total=sum(by_source.values()), by_source=by_source, providers=providers)
 
 
 @app.post("/jobs/import", response_model=ImportResponse)

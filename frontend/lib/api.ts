@@ -67,6 +67,7 @@ export type ImportJobsResponse = {
 export type JobStats = {
   total: number;
   by_source: Record<string, number>;
+  providers: Record<string, boolean>;
 };
 
 export type ImportJobsOptions = {

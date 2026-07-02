@@ -109,3 +109,4 @@ class ImportResponse(BaseModel):
 class JobStats(BaseModel):
     total: int
     by_source: dict[str, int]
+    providers: dict[str, bool]

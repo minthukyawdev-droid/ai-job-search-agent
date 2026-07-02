@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { importRealJobs } from "@/lib/api";
 import type { ImportJobsOptions } from "@/lib/api";
 
-export function ImportJobsButton({ query }: { query: string }) {
+export function ImportJobsButton({ query, providers }: { query: string; providers?: Record<string, boolean> }) {
   const router = useRouter();
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -40,7 +40,9 @@ export function ImportJobsButton({ query }: { query: string }) {
           onChange={(event) => setSource(event.target.value as ImportJobsOptions["source"])}
         >
           <option value="remotive">Remotive</option>
-          <option value="adzuna">Adzuna</option>
+          <option value="adzuna" disabled={providers?.adzuna === false}>
+            {providers?.adzuna === false ? "Adzuna (API key required)" : "Adzuna"}
+          </option>
           <option value="greenhouse">Greenhouse</option>
           <option value="lever">Lever</option>
         </select>
@@ -63,6 +65,9 @@ export function ImportJobsButton({ query }: { query: string }) {
           {loading ? "Importing..." : "Load jobs"}
         </button>
       </div>
+      {providers?.adzuna === false ? (
+        <p className="snippet">Adzuna becomes available after its API credentials are added to Railway.</p>
+      ) : null}
       {message ? <p className="snippet">{message}</p> : null}
     </div>
   );

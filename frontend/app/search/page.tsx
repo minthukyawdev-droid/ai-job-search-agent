@@ -17,7 +17,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
         <p className="eyebrow">Natural language search</p>
         <h1>Search results</h1>
         <SearchBox initialQuery={query} />
-        {query ? <ImportJobsButton query={query} /> : null}
+        {query ? <ImportJobsButton query={query} providers={stats?.providers} /> : null}
         {stats ? (
           <div className="meta">
             <span className="pill">Loaded jobs: {stats.total}</span>

@@ -19,6 +19,12 @@ stats_response = client.get("/jobs/stats")
 assert stats_response.status_code == 200, stats_response.text
 stats = stats_response.json()
 assert stats["total"] == len(jobs), stats
+assert stats["providers"] == {
+    "remotive": True,
+    "adzuna": False,
+    "greenhouse": True,
+    "lever": True,
+}, stats
 
 search_response = client.get(
     "/jobs/search",
