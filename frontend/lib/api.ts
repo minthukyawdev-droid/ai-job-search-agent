@@ -64,6 +64,17 @@ export type ImportJobsResponse = {
   jobs: Job[];
 };
 
+export type JobStats = {
+  total: number;
+  by_source: Record<string, number>;
+};
+
+export type ImportJobsOptions = {
+  source: "remotive" | "adzuna" | "greenhouse" | "lever";
+  query: string;
+  company?: string;
+};
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE_URL}${path}`, {
     ...init,
@@ -86,11 +97,15 @@ export function searchJobs(query: string) {
   return request<SearchResponse>(`/jobs/search?query=${encodeURIComponent(query)}`);
 }
 
-export function importRealJobs(query: string, source = "remotive") {
+export function importRealJobs({ query, source, company }: ImportJobsOptions) {
   return request<ImportJobsResponse>("/jobs/import", {
     method: "POST",
-    body: JSON.stringify({ source, query, limit: 50 })
+    body: JSON.stringify({ source, query, company: company || null, limit: 50 })
   });
+}
+
+export function getJobStats() {
+  return request<JobStats>("/jobs/stats");
 }
 
 export function getJob(id: string | number) {

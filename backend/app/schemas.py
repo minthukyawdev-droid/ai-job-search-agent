@@ -104,3 +104,8 @@ class ImportResponse(BaseModel):
     imported: int
     updated: int
     jobs: list[JobRead]
+
+
+class JobStats(BaseModel):
+    total: int
+    by_source: dict[str, int]

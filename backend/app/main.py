@@ -14,6 +14,7 @@ from app.schemas import (
     JobImportRequest,
     JobMatch,
     JobRead,
+    JobStats,
     SaveJobRequest,
     SearchResponse,
     UserProfileCreate,
@@ -43,6 +44,17 @@ app.add_middleware(
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.get("/jobs/stats", response_model=JobStats)
+def job_stats(db: Session = Depends(get_db)) -> JobStats:
+    rows = db.execute(
+        select(models.Job.source, func.count(models.Job.id))
+        .group_by(models.Job.source)
+        .order_by(models.Job.source)
+    ).all()
+    by_source = {str(source): int(count) for source, count in rows}
+    return JobStats(total=sum(by_source.values()), by_source=by_source)
 
 
 @app.post("/jobs/import", response_model=ImportResponse)

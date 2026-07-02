@@ -1,12 +1,15 @@
 import { JobCard } from "@/components/JobCard";
 import { ImportJobsButton } from "@/components/ImportJobsButton";
 import { SearchBox } from "@/components/SearchBox";
-import { searchJobs } from "@/lib/api";
+import { getJobStats, searchJobs } from "@/lib/api";
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const params = await searchParams;
   const query = params.q ?? "";
-  const data = query ? await searchJobs(query).catch(() => null) : null;
+  const [data, stats] = await Promise.all([
+    query ? searchJobs(query).catch(() => null) : Promise.resolve(null),
+    getJobStats().catch(() => null)
+  ]);
 
   return (
     <main className="page">
@@ -15,6 +18,16 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
         <h1>Search results</h1>
         <SearchBox initialQuery={query} />
         {query ? <ImportJobsButton query={query} /> : null}
+        {stats ? (
+          <div className="meta">
+            <span className="pill">Loaded jobs: {stats.total}</span>
+            {Object.entries(stats.by_source).map(([source, count]) => (
+              <span className="pill" key={source}>
+                {source}: {count}
+              </span>
+            ))}
+          </div>
+        ) : null}
       </section>
       {data ? (
         <section className="grid">
@@ -37,7 +50,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
           </aside>
         </section>
       ) : (
-        <div className="empty">Try a search like “senior AI PM remote jobs in APAC”.</div>
+        <div className="empty">Try a search like "senior AI PM remote jobs in APAC".</div>
       )}
     </main>
   );
