@@ -101,3 +101,8 @@ When configured, the backend uses OpenAI for query understanding, embeddings, an
 - `POST /jobs/import` supports real provider ingestion and JSON payloads.
 - Vector search is implemented behind a FAISS-compatible adapter with a pure-Python fallback; the adapter can be replaced by a persisted FAISS or Pinecone index.
 - PostgreSQL full-text search is used automatically when `DATABASE_URL` points at Postgres.
+
+## CI/CD
+
+GitHub Actions runs backend smoke checks and a production frontend build for every push and pull request to `master`.
+Railway and Vercel are connected to the same GitHub branch and deploy new commits automatically.
