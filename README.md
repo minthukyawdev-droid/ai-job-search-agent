@@ -2,6 +2,8 @@
 
 An AI-powered job search web app with a FastAPI backend, PostgreSQL persistence, Redis caching, hybrid search, profile-based recommendations, real job ingestion connectors, and a Next.js + Tailwind frontend.
 
+Product strategy, success metrics, and the prioritized delivery plan are maintained in [PRODUCT.md](PRODUCT.md).
+
 ## What is included
 
 - Natural-language job search with structured filter extraction
